@@ -1,0 +1,20 @@
+<h1><%= "#{ @task.new_record?() ? 'Add a new task' : "Edit the task: #{@task.title}" }" %></h1>
+
+<div class="container">
+  <%= form_for(@task) do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :details %>
+      <%= f.text_area :details, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <% if @task.new_record?() == false %>
+        <%= f.check_box :completed %>
+        <%= f.label :completed %>
+      <% end %>
+    </div>
+    <%= f.submit class: "btn btn-success" %>
+  <% end %>
+</div>
